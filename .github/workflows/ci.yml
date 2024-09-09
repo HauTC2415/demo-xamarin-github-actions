@@ -36,7 +36,6 @@ jobs:
 
       - name: Setup Android signing
         run: (echo ${{ secrets.KEYSTORE }} | base64 --decode) > ./GitHubActions.Android/keystore.jks
-        
       # - name: Set iOS version
       #   run: |
       #     /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ secrets.APP_VERSION }}" ./GitHubActions.iOS/Info.plist
