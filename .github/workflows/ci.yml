@@ -23,7 +23,7 @@ jobs:
       - name: Set default Xamarin SDK versions
         #   # https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode
         run: |
-          echo "$VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=16.4 --android=13.2"
+          $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=16.4 --android=13.2
 
       # - name: Setup iOS Certificates
       #   uses: apple-actions/import-codesign-certs@v1
@@ -64,7 +64,7 @@ jobs:
       #   run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ./GitHubActions.iOS/GitHubActions.iOS.csproj
         
       - name: Build Android
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=cicdxamarin /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyStore=keystore.jks /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} ./GitHubActions.Android/GitHubActions.Android.csproj
+        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=cicdxamarin /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyStore=./GitHubActions.Android/keystore.jks /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} ./GitHubActions.Android/GitHubActions.Android.csproj
         
       # - name: Setup App Center CLI
       #   run: npm install -g appcenter-cli
