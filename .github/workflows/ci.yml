@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set default Xamarin SDK versions
+        #   # https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode
+        run: |
+          echo "$VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=16.4 --android=13.2"
 
       # - name: Setup iOS Certificates
       #   uses: apple-actions/import-codesign-certs@v1
