@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Ensure directory exists  
+        run: mkdir -p ./GitHubActions.Android  
+
       - name: Set default Xamarin SDK versions
         #   # https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode
         run: |
